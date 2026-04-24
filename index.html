@@ -1,0 +1,2455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uncle Dumpling™ - Fine Dining Chinese Dumplings | Sydney</title>
+    <style>
+        /* ============================================
+           LUXURY DARK AESTHETIC WITH GOLD ACCENTS
+           Design Philosophy: Minimalist elegance with sophisticated typography
+           ============================================ */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #0a0a0a;
+            color: #e8e8e8;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography System */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            line-height: 1.8;
+        }
+
+        /* Accent Color - Gold */
+        .accent {
+            color: #d4af37;
+        }
+
+        .accent-border {
+            border-color: #d4af37;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 0.1em;
+        }
+
+        .tm {
+            font-size: 0.6em;
+            vertical-align: super;
+            color: #d4af37;
+            margin-left: 0.1em;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 0.35rem;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            accent-color: #d4af37;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            color: #b8b8b8;
+            font-size: 0.9rem;
+            cursor: pointer;
+            line-height: 1.5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e8e8e8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #d4af37;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #d4af37;
+            transition: transform 0.3s ease;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #d4af37;
+            color: #0a0a0a;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .member-dropdown {
+            position: relative;
+        }
+
+        .member-btn {
+            background: none;
+            border: none;
+            color: #d4af37;
+            cursor: pointer;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .member-btn:hover {
+            color: #e8e8e8;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: rgba(10, 10, 10, 0.98);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 2px;
+            min-width: 200px;
+            margin-top: 0.5rem;
+            z-index: 999;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-menu a,
+        .dropdown-menu button {
+            display: block;
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            color: #e8e8e8;
+            text-decoration: none;
+            border: none;
+            background: none;
+            cursor: pointer;
+            text-align: left;
+            transition: background-color 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-menu a:hover,
+        .dropdown-menu button:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+            color: #d4af37;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: rgba(212, 175, 55, 0.2);
+            margin: 0.5rem 0;
+        }
+
+        .auth-btn {
+            background-color: #d4af37;
+            color: #0a0a0a;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .auth-btn:hover {
+            background-color: transparent;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #d4af37;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+
+        .hero {
+            margin-top: 60px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1410 50%, #0a0a0a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: #d4af37;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: #b8b8b8;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: #d4af37;
+            color: #0a0a0a;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            border: 2px solid #d4af37;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0 0.5rem;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: #d4af37;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+
+        /* ============================================
+           ABOUT SECTION
+           ============================================ */
+
+        .about {
+            padding: 6rem 2rem;
+            background-color: #0f0f0f;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .section-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: #d4af37;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #d0d0d0;
+        }
+
+        .about-highlight {
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border-radius: 2px;
+        }
+
+        /* ============================================
+           MENU SECTION
+           ============================================ */
+
+        .menu {
+            padding: 6rem 2rem;
+            background-color: #0a0a0a;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .menu-item {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(212, 175, 55, 0.02) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .menu-item:hover {
+            border-color: #d4af37;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+        }
+
+        .menu-item:hover::before {
+            left: 100%;
+        }
+
+        .menu-item h3 {
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-price {
+            font-size: 0.9rem;
+            color: #a89968;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item-description {
+            font-size: 0.95rem;
+            color: #b8b8b8;
+            line-height: 1.7;
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .add-to-order-btn {
+            background-color: #d4af37;
+            color: #0a0a0a;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        .add-to-order-btn:hover {
+            background-color: transparent;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+        }
+
+        /* ============================================
+           ORDERING SECTION
+           ============================================ */
+
+        .ordering {
+            padding: 6rem 2rem;
+            background-color: #0f0f0f;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .ordering-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .ordering-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .ordering-item {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(212, 175, 55, 0.02) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ordering-item:hover {
+            border-color: #d4af37;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.1);
+        }
+
+        .ordering-item h4 {
+            color: #d4af37;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .ordering-item-price {
+            color: #a89968;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .ordering-item-desc {
+            color: #b8b8b8;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .qty-btn {
+            background-color: rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #d4af37;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .qty-btn:hover {
+            background-color: #d4af37;
+            color: #0a0a0a;
+        }
+
+        .qty-display {
+            flex: 1;
+            text-align: center;
+            color: #e8e8e8;
+            font-weight: 600;
+        }
+
+        .add-btn {
+            width: 100%;
+            background-color: #d4af37;
+            color: #0a0a0a;
+            border: none;
+            padding: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .add-btn:hover {
+            background-color: transparent;
+            color: #d4af37;
+            border: 1px solid #d4af37;
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(212, 175, 55, 0.02) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 2rem;
+            border-radius: 2px;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+        }
+
+        .cart-sidebar h3 {
+            color: #d4af37;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+
+        .cart-items {
+            margin-bottom: 1.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 2px solid #d4af37;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-qty {
+            color: #b8b8b8;
+            font-size: 0.85rem;
+        }
+
+        .cart-item-price {
+            color: #d4af37;
+            font-weight: 600;
+            margin-left: 1rem;
+        }
+
+        .remove-item-btn {
+            background: none;
+            border: none;
+            color: #d4af37;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .remove-item-btn:hover {
+            color: #ff6b6b;
+        }
+
+        .empty-cart {
+            text-align: center;
+            color: #707070;
+            padding: 2rem 0;
+            font-style: italic;
+        }
+
+        .cart-divider {
+            height: 1px;
+            background-color: rgba(212, 175, 55, 0.2);
+            margin: 1.5rem 0;
+        }
+
+        .cart-summary {
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            color: #b8b8b8;
+            font-size: 0.95rem;
+        }
+
+        .summary-row.total {
+            color: #d4af37;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding-top: 0.75rem;
+        }
+
+        .loyalty-badge {
+            background-color: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 0.75rem;
+            border-radius: 2px;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #d4af37;
+        }
+
+        .delivery-options {
+            margin-bottom: 1.5rem;
+        }
+
+        .delivery-options label {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: #e8e8e8;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .delivery-options input[type="radio"] {
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background-color: #d4af37;
+            color: #0a0a0a;
+            border: none;
+            padding: 1rem;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .checkout-btn:hover {
+            background-color: transparent;
+            color: #d4af37;
+            border: 2px solid #d4af37;
+        }
+
+        .checkout-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* ============================================
+           MODALS
+           ============================================ */
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: auto;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #0f0f0f;
+            padding: 2.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            width: 90%;
+            max-width: 600px;
+            border-radius: 2px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: #d4af37;
+            font-size: 1.8rem;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #d4af37;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .close-btn:hover {
+            color: #ff6b6b;
+        }
+
+        /* Auth Modal */
+        .auth-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .auth-tab {
+            background: none;
+            border: none;
+            color: #b8b8b8;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+        }
+
+        .auth-tab.active {
+            color: #d4af37;
+            border-bottom-color: #d4af37;
+        }
+
+        .auth-tab-content {
+            display: none;
+        }
+
+        .auth-tab-content.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background-color: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: #e8e8e8;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(232, 232, 232, 0.5);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background-color: rgba(212, 175, 55, 0.1);
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 1.5rem;
+        }
+
+        .forgot-password a {
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .forgot-password a:hover {
+            color: #e8e8e8;
+        }
+
+        .payment-options {
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-options label {
+            display: block;
+            margin-bottom: 0.75rem;
+            color: #e8e8e8;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .payment-options input[type="radio"] {
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: #d4af37;
+            color: #0a0a0a;
+            border: 2px solid #d4af37;
+            padding: 1rem;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .submit-btn:hover {
+            background-color: transparent;
+            color: #d4af37;
+        }
+
+        .success-message {
+            display: none;
+            background-color: rgba(212, 175, 55, 0.1);
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            padding: 1rem;
+            border-radius: 2px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .error-message {
+            display: none;
+            background-color: rgba(255, 107, 107, 0.1);
+            border: 1px solid #ff6b6b;
+            color: #ff6b6b;
+            padding: 1rem;
+            border-radius: 2px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        /* Loyalty Modal */
+        .loyalty-container {
+            text-align: center;
+        }
+
+        .loyalty-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .loyalty-member-name {
+            font-size: 1.3rem;
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .loyalty-tier {
+            font-size: 1rem;
+            color: #b8b8b8;
+            margin-bottom: 1rem;
+        }
+
+        .tier-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .points-display {
+            margin-bottom: 2rem;
+        }
+
+        .points-number {
+            font-size: 2.5rem;
+            color: #d4af37;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+
+        .points-label {
+            color: #b8b8b8;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-bar-container {
+            background-color: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            height: 30px;
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #d4af37, #e8c547);
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0a0a0a;
+        }
+
+        .progress-label {
+            color: #b8b8b8;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tier-benefits {
+            text-align: left;
+            background-color: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 1.5rem;
+            border-radius: 2px;
+            margin-top: 2rem;
+        }
+
+        .tier-benefits h4 {
+            color: #d4af37;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .tier-benefits ul {
+            list-style: none;
+            color: #b8b8b8;
+            font-size: 0.9rem;
+        }
+
+        .tier-benefits li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tier-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+            font-weight: 700;
+        }
+
+        /* ============================================
+           RESERVATION SECTION
+           ============================================ */
+
+        .reservation {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1410 100%);
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .reservation-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .reservation-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .reservation-form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .reservation-form-group input,
+        .reservation-form-group textarea,
+        .reservation-form-group select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background-color: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            color: #e8e8e8;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .reservation-form-group input::placeholder,
+        .reservation-form-group textarea::placeholder {
+            color: rgba(232, 232, 232, 0.5);
+        }
+
+        .reservation-form-group input:focus,
+        .reservation-form-group textarea:focus,
+        .reservation-form-group select:focus {
+            outline: none;
+            background-color: rgba(212, 175, 55, 0.1);
+            border-color: #d4af37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .reservation-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .reservation-form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1rem;
+            background-color: #d4af37;
+            color: #0a0a0a;
+            border: 2px solid #d4af37;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .submit-button:hover {
+            background-color: transparent;
+            color: #d4af37;
+            transform: translateY(-2px);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+
+        footer {
+            background-color: #000000;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.5rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .footer-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-section h4 {
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-section p {
+            color: #a8a8a8;
+            font-size: 0.9rem;
+        }
+
+        .footer-divider {
+            width: 40px;
+            height: 1px;
+            background-color: #d4af37;
+            margin: 2rem auto;
+        }
+
+        .footer-bottom {
+            color: #707070;
+            font-size: 0.85rem;
+            margin-top: 2rem;
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+
+        @media (max-width: 1024px) {
+            .ordering-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-sidebar {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-container {
+                padding: 0;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                background-color: rgba(10, 10, 10, 0.98);
+                border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+                padding: 1rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem 2rem;
+                display: block;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                margin-top: 60px;
+                min-height: 80vh;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+
+            .reservation-form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-info {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ordering-menu {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-tagline {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.875rem 2rem;
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .about {
+                padding: 3rem 1.5rem;
+            }
+
+            .menu {
+                padding: 3rem 1.5rem;
+            }
+
+            .ordering {
+                padding: 3rem 1.5rem;
+            }
+
+            .reservation {
+                padding: 3rem 1.5rem;
+            }
+
+            footer {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Uncle Dumpling<span class="tm">™</span></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#ordering">Order Online</a></li>
+                <li><a href="#reservation">Reservation</a></li>
+            </ul>
+            <div class="nav-right">
+                <div class="cart-icon" id="cartIcon" title="View Cart">
+                    🛒
+                    <span class="cart-count" id="cartCount" style="display: none;">0</span>
+                </div>
+                <div class="member-dropdown">
+                    <button class="member-btn" id="memberBtn">👤 Account</button>
+                    <div class="dropdown-menu" id="memberDropdown">
+                        <a href="#" id="loginRegisterLink">Login / Register</a>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-subtitle">Welcome to</p>
+            <h1>Uncle Dumpling<span class="tm">™</span></h1>
+            <p class="hero-tagline">Experience the Art of Handcrafted Dumplings</p>
+            <a href="#ordering" class="cta-button">Order Online</a>
+            <a href="#reservation" class="cta-button">Reserve Your Table</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Our Story</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        <span class="about-highlight">Uncle Dumpling<span class="tm">™</span></span> represents a century-old tradition of dumpling craftsmanship, passed down through generations of master artisans. Each dumpling is meticulously hand-folded using techniques refined over decades, combining the finest ingredients with unwavering dedication to excellence.
+                    </p>
+                    <p>
+                        Our philosophy centers on <span class="about-highlight">simplicity and purity</span>. We believe that exceptional food requires no embellishment—only the highest quality ingredients, precise technique, and respect for tradition. Every fold, every filling, every steam is an expression of our commitment to perfection.
+                    </p>
+                    <p>
+                        Located in the heart of Sydney, Uncle Dumpling<span class="tm">™</span> offers an intimate dining experience where you can witness the artistry of dumpling-making while savoring each delicate creation. We invite you to join us on a culinary journey that honors the past while celebrating the present.
+                    </p>
+                </div>
+                <div class="about-image">🥟</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Signature Dumplings</h2>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Jade Dragon</h3>
+                    <p class="menu-item-price">AUD $14 per 6 pieces</p>
+                    <p class="menu-item-description">Delicate spinach wrappers filled with shrimp, bamboo shoots, and a hint of truffle oil. A harmonious blend of land and sea.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Golden Treasure</h3>
+                    <p class="menu-item-price">AUD $16 per 6 pieces</p>
+                    <p class="menu-item-description">Premium pork and scallop filling with a touch of aged soy reduction. Wrapped in our signature golden wheat wrapper.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Silk Road</h3>
+                    <p class="menu-item-price">AUD $15 per 6 pieces</p>
+                    <p class="menu-item-description">Lamb and cumin-infused filling with roasted garlic and fresh cilantro. An exotic journey through ancient trade routes.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Celestial Pearl</h3>
+                    <p class="menu-item-price">AUD $18 per 6 pieces</p>
+                    <p class="menu-item-description">Lobster and king crab with a delicate saffron-infused broth center. Our most luxurious creation, steamed to perfection.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Harmony</h3>
+                    <p class="menu-item-price">AUD $13 per 6 pieces</p>
+                    <p class="menu-item-description">Vegetable medley with shiitake mushrooms, water chestnuts, and aromatic ginger. A celebration of garden-fresh flavors.</p>
+                </div>
+                <div class="menu-item">
+                    <h3>Imperial Blend</h3>
+                    <p class="menu-item-price">AUD $17 per 6 pieces</p>
+                    <p class="menu-item-description">A masterful combination of pork, shrimp, and black truffle. Our chef's personal creation, available in limited quantities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Ordering Section -->
+    <section class="ordering" id="ordering">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Order Online</h2>
+            </div>
+        </div>
+        <div class="ordering-container">
+            <div class="ordering-menu" id="orderingMenu"></div>
+            <div class="cart-sidebar">
+                <h3>Your Order</h3>
+                <div id="loyaltyBadgeContainer"></div>
+                <div class="cart-items" id="cartItems">
+                    <div class="empty-cart">Your cart is empty</div>
+                </div>
+                <div class="cart-divider"></div>
+                <div class="delivery-options">
+                    <label>
+                        <input type="radio" name="deliveryType" value="delivery" checked>
+                        Delivery
+                    </label>
+                    <label>
+                        <input type="radio" name="deliveryType" value="pickup">
+                        Pickup
+                    </label>
+                </div>
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">AUD $0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Fee:</span>
+                        <span id="deliveryFee">AUD $3.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="total">AUD $0.00</span>
+                    </div>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn" disabled>Proceed to Checkout</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Checkout</h2>
+                <button class="close-btn" id="closeCheckoutBtn">&times;</button>
+            </div>
+            <div class="success-message" id="successMessage">
+                Thank you for your order! Your food will be ready soon.
+            </div>
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label for="customerName">Full Name *</label>
+                    <input type="text" id="customerName" name="customerName" required placeholder="Your name">
+                </div>
+
+                <div id="deliveryAddressGroup" class="form-group">
+                    <label for="address">Delivery Address *</label>
+                    <input type="text" id="address" name="address" placeholder="Street address">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+61 2 XXXX XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="specialRequests">Special Requests</label>
+                    <textarea id="specialRequests" name="specialRequests" placeholder="Any allergies or special instructions?"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Payment Method *</label>
+                    <div class="payment-options">
+                        <label>
+                            <input type="radio" name="paymentMethod" value="credit_card" checked>
+                            Credit Card
+                        </label>
+                        <label>
+                            <input type="radio" name="paymentMethod" value="debit_card">
+                            Debit Card
+                        </label>
+                        <label>
+                            <input type="radio" name="paymentMethod" value="paypal">
+                            PayPal
+                        </label>
+                        <label>
+                            <input type="radio" name="paymentMethod" value="cash">
+                            Cash on Delivery
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Order Summary</label>
+                    <div id="orderSummary" style="background-color: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.15); padding: 1rem; border-radius: 2px; color: #b8b8b8; font-size: 0.9rem;"></div>
+                </div>
+
+                <div id="loyaltyPointsInfo" style="background-color: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.15); padding: 1rem; border-radius: 2px; margin-bottom: 1.5rem; text-align: center; color: #d4af37; font-weight: 600; display: none;"></div>
+
+                <button type="submit" class="submit-btn">Complete Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Account</h2>
+                <button class="close-btn" id="closeAuthBtn">&times;</button>
+            </div>
+            <div class="error-message" id="authErrorMessage"></div>
+            <div class="auth-tabs">
+                <button type="button" class="auth-tab active" data-tab="login">Login</button>
+                <button type="button" class="auth-tab" data-tab="register">Register</button>
+            </div>
+
+            <!-- Login Tab -->
+            <div class="auth-tab-content active" id="loginTab">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email *</label>
+                        <input type="email" id="loginEmail" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password *</label>
+                        <input type="password" id="loginPassword" name="password" required placeholder="••••••••">
+                    </div>
+                    <div class="forgot-password">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="submit-btn">Login</button>
+                </form>
+            </div>
+
+            <!-- Register Tab -->
+            <div class="auth-tab-content" id="registerTab">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="registerName">Full Name *</label>
+                        <input type="text" id="registerName" name="fullName" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email *</label>
+                        <input type="email" id="registerEmail" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="registerPassword">Password *</label>
+                            <input type="password" id="registerPassword" name="password" required placeholder="••••••••">
+                        </div>
+                        <div class="form-group">
+                            <label for="registerConfirmPassword">Confirm Password *</label>
+                            <input type="password" id="registerConfirmPassword" name="confirmPassword" required placeholder="••••••••">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerDOB">Date of Birth *</label>
+                        <input type="date" id="registerDOB" name="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPhone">Phone Number *</label>
+                        <input type="tel" id="registerPhone" name="phone" required placeholder="04XX XXX XXX">
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="promoOptIn" name="promoOptIn" checked>
+                        <label for="promoOptIn">I'd like to receive exclusive promotions and offers via email and SMS</label>
+                    </div>
+                    <button type="submit" class="submit-btn">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loyalty Modal -->
+    <div class="modal" id="loyaltyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>My Loyalty</h2>
+                <button class="close-btn" id="closeLoyaltyBtn">&times;</button>
+            </div>
+            <div class="loyalty-container">
+                <div class="loyalty-header">
+                    <div class="loyalty-member-name" id="loyaltyMemberName">Member Name</div>
+                    <div class="loyalty-tier">Membership Status</div>
+                    <div class="tier-badge" id="loyaltyTierBadge">Bronze</div>
+                </div>
+
+                <div class="points-display">
+                    <div class="points-number" id="loyaltyPointsNumber">0</div>
+                    <div class="points-label">Total Points Earned</div>
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="loyaltyProgressBar" style="width: 0%;">
+                        <span id="progressPercentage">0%</span>
+                    </div>
+                </div>
+                <div class="progress-label" id="progressLabel">0 / 500 points to Silver</div>
+
+                <div class="tier-benefits">
+                    <h4>Current Tier Benefits</h4>
+                    <ul id="tierBenefitsList">
+                        <li>Earn 10 points per AUD $1 spent</li>
+                        <li>Exclusive member discounts</li>
+                        <li>Birthday bonus points</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reservation Section -->
+    <section class="reservation" id="reservation">
+        <div class="reservation-container">
+            <div class="section-header">
+                <h2>Make a Reservation</h2>
+            </div>
+            <div class="success-message" id="reservationSuccessMessage">
+                Thank you for your reservation request. We will confirm your booking shortly.
+            </div>
+            <form id="reservationForm">
+                <div class="reservation-form-row">
+                    <div class="reservation-form-group">
+                        <label for="resName">Full Name</label>
+                        <input type="text" id="resName" name="resName" required placeholder="Your name">
+                    </div>
+                    <div class="reservation-form-group">
+                        <label for="resEmail">Email</label>
+                        <input type="email" id="resEmail" name="resEmail" required placeholder="your@email.com">
+                    </div>
+                </div>
+                <div class="reservation-form-row">
+                    <div class="reservation-form-group">
+                        <label for="resDate">Preferred Date</label>
+                        <input type="date" id="resDate" name="resDate" required>
+                    </div>
+                    <div class="reservation-form-group">
+                        <label for="resPartySize">Party Size</label>
+                        <select id="resPartySize" name="resPartySize" required>
+                            <option value="">Select party size</option>
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5 Guests</option>
+                            <option value="6">6 Guests</option>
+                            <option value="7">7 Guests</option>
+                            <option value="8">8+ Guests</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="reservation-form-group">
+                    <label for="resMessage">Special Requests</label>
+                    <textarea id="resMessage" name="resMessage" placeholder="Any dietary restrictions or special occasions?"></textarea>
+                </div>
+                <button type="submit" class="submit-button">Confirm Reservation</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Uncle Dumpling<span class="tm">™</span></div>
+            <div class="footer-info">
+                <div class="footer-section">
+                    <h4>Address</h4>
+                    <p>Level 2, 456 George Street<br>Sydney CBD NSW 2000<br>Australia</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Hours</h4>
+                    <p>Tuesday - Thursday: 5PM - 11PM<br>Friday - Saturday: 5PM - 12AM<br>Sunday: 5PM - 10PM<br>Closed Mondays</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Phone: +61 2 9247 8888<br>Email: hello@uncledumpling.com.au<br>Reservations Recommended</p>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Uncle Dumpling<span class="tm">™</span>. All rights reserved. Crafted with dedication to culinary excellence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // MENU DATA
+        // ============================================
+        const menuItems = [
+            { id: 1, name: 'Jade Dragon', price: 14, description: 'Delicate spinach wrappers filled with shrimp, bamboo shoots, and a hint of truffle oil.' },
+            { id: 2, name: 'Golden Treasure', price: 16, description: 'Premium pork and scallop filling with a touch of aged soy reduction.' },
+            { id: 3, name: 'Silk Road', price: 15, description: 'Lamb and cumin-infused filling with roasted garlic and fresh cilantro.' },
+            { id: 4, name: 'Celestial Pearl', price: 18, description: 'Lobster and king crab with a delicate saffron-infused broth center.' },
+            { id: 5, name: 'Harmony', price: 13, description: 'Vegetable medley with shiitake mushrooms, water chestnuts, and aromatic ginger.' },
+            { id: 6, name: 'Imperial Blend', price: 17, description: 'A masterful combination of pork, shrimp, and black truffle.' }
+        ];
+
+        // ============================================
+        // CONSTANTS
+        // ============================================
+        const DELIVERY_FEE = 3.00;
+        const POINTS_PER_DOLLAR = 10;
+        const BRONZE_THRESHOLD = 0;
+        const SILVER_THRESHOLD = 500;
+        const GOLD_THRESHOLD = 2000;
+
+        // ============================================
+        // CART STATE
+        // ============================================
+        let cart = [];
+        let currentUser = null;
+
+        // ============================================
+        // INITIALIZE
+        // ============================================
+        function init() {
+            loadCurrentUser();
+            initializeOrderingMenu();
+            updateCart();
+            setupEventListeners();
+        }
+
+        // ============================================
+        // USER MANAGEMENT
+        // ============================================
+        function loadCurrentUser() {
+            const userId = localStorage.getItem('currentUserId');
+            if (userId) {
+                const users = JSON.parse(localStorage.getItem('users') || '{}');
+                currentUser = users[userId];
+                updateMemberUI();
+            }
+        }
+
+        function saveUser(user) {
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            users[user.id] = user;
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+
+        function updateMemberUI() {
+            const memberBtn = document.getElementById('memberBtn');
+            const dropdown = document.getElementById('memberDropdown');
+            const loginLink = document.getElementById('loginRegisterLink');
+
+            if (currentUser) {
+                memberBtn.textContent = `👤 ${currentUser.fullName.split(' ')[0]}`;
+                dropdown.innerHTML = `
+                    <button type="button" onclick="openLoyaltyModal()">My Loyalty</button>
+                    <div class="dropdown-divider"></div>
+                    <a href="#">My Account</a>
+                    <a href="#">Order History</a>
+                    <div class="dropdown-divider"></div>
+                    <button type="button" onclick="logout()">Logout</button>
+                `;
+                updateLoyaltyBadge();
+            } else {
+                memberBtn.textContent = '👤 Account';
+                dropdown.innerHTML = '<a href="#" id="loginRegisterLink">Login / Register</a>';
+                document.getElementById('loginRegisterLink').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openAuthModal();
+                });
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            localStorage.removeItem('currentUserId');
+            updateMemberUI();
+            updateCart();
+            closeAllModals();
+        }
+
+        // ============================================
+        // AUTH MODAL
+        // ============================================
+        const authModal = document.getElementById('authModal');
+        const closeAuthBtn = document.getElementById('closeAuthBtn');
+
+        function openAuthModal() {
+            authModal.classList.add('show');
+            resetAuthTabs();
+        }
+
+        function closeAuthModal() {
+            authModal.classList.remove('show');
+        }
+
+        closeAuthBtn.addEventListener('click', closeAuthModal);
+        authModal.addEventListener('click', (e) => {
+            if (e.target === authModal) closeAuthModal();
+        });
+
+        function resetAuthTabs() {
+            document.querySelectorAll('.auth-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.auth-tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelector('.auth-tab[data-tab="login"]').classList.add('active');
+            document.getElementById('loginTab').classList.add('active');
+        }
+
+        document.querySelectorAll('.auth-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabName = tab.dataset.tab;
+                document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.auth-tab-content').forEach(content => content.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tabName + 'Tab').classList.add('active');
+            });
+        });
+
+        // Login Form
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const errorMsg = document.getElementById('authErrorMessage');
+
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            const user = Object.values(users).find(u => u.email === email);
+
+            if (user && user.password === password) {
+                currentUser = user;
+                localStorage.setItem('currentUserId', user.id);
+                updateMemberUI();
+                closeAuthModal();
+                document.getElementById('loginForm').reset();
+                errorMsg.classList.remove('show');
+            } else {
+                errorMsg.textContent = 'Invalid email or password';
+                errorMsg.classList.add('show');
+            }
+        });
+
+        // Register Form
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const fullName = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            const dob = document.getElementById('registerDOB').value;
+            const phone = document.getElementById('registerPhone').value;
+            const promoOptIn = document.getElementById('promoOptIn').checked;
+            const errorMsg = document.getElementById('authErrorMessage');
+
+            if (password !== confirmPassword) {
+                errorMsg.textContent = 'Passwords do not match';
+                errorMsg.classList.add('show');
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            if (Object.values(users).some(u => u.email === email)) {
+                errorMsg.textContent = 'Email already registered';
+                errorMsg.classList.add('show');
+                return;
+            }
+
+            const newUser = {
+                id: Date.now().toString(),
+                fullName,
+                email,
+                password,
+                dob,
+                phone,
+                promoOptIn,
+                loyaltyPoints: 0,
+                registeredDate: new Date().toISOString()
+            };
+
+            saveUser(newUser);
+            currentUser = newUser;
+            localStorage.setItem('currentUserId', newUser.id);
+            updateMemberUI();
+            closeAuthModal();
+            document.getElementById('registerForm').reset();
+            errorMsg.classList.remove('show');
+        });
+
+        // ============================================
+        // LOYALTY SYSTEM
+        // ============================================
+        function getLoyaltyTier(points) {
+            if (points >= GOLD_THRESHOLD) return { name: 'Gold', color: '#FFD700' };
+            if (points >= SILVER_THRESHOLD) return { name: 'Silver', color: '#C0C0C0' };
+            return { name: 'Bronze', color: '#CD7F32' };
+        }
+
+        function getPointsToNextTier(points) {
+            if (points >= GOLD_THRESHOLD) return { current: points, next: Infinity, threshold: GOLD_THRESHOLD };
+            if (points >= SILVER_THRESHOLD) return { current: points, next: GOLD_THRESHOLD, threshold: SILVER_THRESHOLD };
+            return { current: points, next: SILVER_THRESHOLD, threshold: BRONZE_THRESHOLD };
+        }
+
+        function updateLoyaltyBadge() {
+            if (!currentUser) {
+                document.getElementById('loyaltyBadgeContainer').innerHTML = '';
+                return;
+            }
+
+            const tier = getLoyaltyTier(currentUser.loyaltyPoints);
+            document.getElementById('loyaltyBadgeContainer').innerHTML = `
+                <div class="loyalty-badge">
+                    🏆 ${tier.name} Member • ${currentUser.loyaltyPoints} points
+                </div>
+            `;
+        }
+
+        function openLoyaltyModal() {
+            if (!currentUser) return;
+
+            const tier = getLoyaltyTier(currentUser.loyaltyPoints);
+            const pointsInfo = getPointsToNextTier(currentUser.loyaltyPoints);
+            const progressPercent = Math.min(100, ((currentUser.loyaltyPoints - pointsInfo.threshold) / (pointsInfo.next - pointsInfo.threshold)) * 100);
+
+            document.getElementById('loyaltyMemberName').textContent = currentUser.fullName;
+            document.getElementById('loyaltyTierBadge').textContent = tier.name;
+            document.getElementById('loyaltyPointsNumber').textContent = currentUser.loyaltyPoints;
+            document.getElementById('loyaltyProgressBar').style.width = progressPercent + '%';
+            document.getElementById('progressPercentage').textContent = Math.round(progressPercent) + '%';
+
+            if (tier.name === 'Gold') {
+                document.getElementById('progressLabel').textContent = 'Maximum tier reached!';
+            } else {
+                const pointsNeeded = pointsInfo.next - currentUser.loyaltyPoints;
+                document.getElementById('progressLabel').textContent = `${currentUser.loyaltyPoints} / ${pointsInfo.next} points to ${tier.name === 'Bronze' ? 'Silver' : 'Gold'}`;
+            }
+
+            document.getElementById('loyaltyModal').classList.add('show');
+        }
+
+        document.getElementById('closeLoyaltyBtn').addEventListener('click', () => {
+            document.getElementById('loyaltyModal').classList.remove('show');
+        });
+
+        document.getElementById('loyaltyModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('loyaltyModal')) {
+                document.getElementById('loyaltyModal').classList.remove('show');
+            }
+        });
+
+        // ============================================
+        // INITIALIZE ORDERING MENU
+        // ============================================
+        function initializeOrderingMenu() {
+            const orderingMenu = document.getElementById('orderingMenu');
+            orderingMenu.innerHTML = menuItems.map(item => `
+                <div class="ordering-item">
+                    <h4>${item.name}</h4>
+                    <p class="ordering-item-price">AUD $${item.price.toFixed(2)}</p>
+                    <p class="ordering-item-desc">${item.description}</p>
+                    <div class="quantity-control">
+                        <button type="button" class="qty-btn" onclick="decreaseQty(${item.id})">−</button>
+                        <div class="qty-display" id="qty-${item.id}">1</div>
+                        <button type="button" class="qty-btn" onclick="increaseQty(${item.id})">+</button>
+                    </div>
+                    <button type="button" class="add-btn" onclick="addToCart(${item.id})">Add to Order</button>
+                </div>
+            `).join('');
+        }
+
+        // ============================================
+        // QUANTITY CONTROLS
+        // ============================================
+        const quantities = {};
+        menuItems.forEach(item => {
+            quantities[item.id] = 1;
+        });
+
+        function increaseQty(itemId) {
+            quantities[itemId]++;
+            document.getElementById(`qty-${itemId}`).textContent = quantities[itemId];
+        }
+
+        function decreaseQty(itemId) {
+            if (quantities[itemId] > 1) {
+                quantities[itemId]--;
+                document.getElementById(`qty-${itemId}`).textContent = quantities[itemId];
+            }
+        }
+
+        // ============================================
+        // CART MANAGEMENT
+        // ============================================
+        function addToCart(itemId) {
+            const item = menuItems.find(m => m.id === itemId);
+            const qty = quantities[itemId];
+            const existingItem = cart.find(c => c.id === itemId);
+
+            if (existingItem) {
+                existingItem.quantity += qty;
+            } else {
+                cart.push({
+                    id: itemId,
+                    name: item.name,
+                    price: item.price,
+                    quantity: qty
+                });
+            }
+
+            quantities[itemId] = 1;
+            document.getElementById(`qty-${itemId}`).textContent = 1;
+            updateCart();
+        }
+
+        function removeFromCart(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartCount = document.getElementById('cartCount');
+            const subtotal = document.getElementById('subtotal');
+            const total = document.getElementById('total');
+            const deliveryFeeEl = document.getElementById('deliveryFee');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+                cartCount.style.display = 'none';
+                subtotal.textContent = 'AUD $0.00';
+                total.textContent = 'AUD $0.00';
+                checkoutBtn.disabled = true;
+                return;
+            }
+
+            const deliveryType = document.querySelector('input[name="deliveryType"]:checked').value;
+            const fee = deliveryType === 'delivery' ? DELIVERY_FEE : 0;
+            deliveryFeeEl.textContent = `AUD $${fee.toFixed(2)}`;
+
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-qty">Qty: ${item.quantity}</div>
+                    </div>
+                    <div class="cart-item-price">AUD $${(item.price * item.quantity).toFixed(2)}</div>
+                    <button type="button" class="remove-item-btn" onclick="removeFromCart(${item.id})">✕</button>
+                </div>
+            `).join('');
+
+            const subtotalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const totalAmount = subtotalAmount + fee;
+
+            cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.style.display = 'flex';
+            subtotal.textContent = `AUD $${subtotalAmount.toFixed(2)}`;
+            total.textContent = `AUD $${totalAmount.toFixed(2)}`;
+            checkoutBtn.disabled = false;
+
+            updateLoyaltyBadge();
+        }
+
+        // ============================================
+        // DELIVERY TYPE CHANGE
+        // ============================================
+        document.querySelectorAll('input[name="deliveryType"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                updateCart();
+                const addressGroup = document.getElementById('deliveryAddressGroup');
+                if (radio.value === 'pickup') {
+                    addressGroup.style.display = 'none';
+                    document.getElementById('address').removeAttribute('required');
+                } else {
+                    addressGroup.style.display = 'block';
+                    document.getElementById('address').setAttribute('required', 'required');
+                }
+            });
+        });
+
+        // ============================================
+        // CHECKOUT MODAL
+        // ============================================
+        const checkoutModal = document.getElementById('checkoutModal');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const closeCheckoutBtn = document.getElementById('closeCheckoutBtn');
+        const checkoutForm = document.getElementById('checkoutForm');
+        const successMessage = document.getElementById('successMessage');
+
+        checkoutBtn.addEventListener('click', () => {
+            if (!currentUser) {
+                alert('Please login or register to proceed with checkout');
+                openAuthModal();
+                return;
+            }
+            updateOrderSummary();
+            checkoutModal.classList.add('show');
+        });
+
+        closeCheckoutBtn.addEventListener('click', () => {
+            checkoutModal.classList.remove('show');
+        });
+
+        checkoutModal.addEventListener('click', (e) => {
+            if (e.target === checkoutModal) {
+                checkoutModal.classList.remove('show');
+            }
+        });
+
+        function updateOrderSummary() {
+            const orderSummary = document.getElementById('orderSummary');
+            const loyaltyPointsInfo = document.getElementById('loyaltyPointsInfo');
+            const deliveryType = document.querySelector('input[name="deliveryType"]:checked').value;
+            const fee = deliveryType === 'delivery' ? DELIVERY_FEE : 0;
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const total = subtotal + fee;
+            const pointsEarned = Math.floor(total * POINTS_PER_DOLLAR);
+
+            let summary = '<div style="margin-bottom: 1rem;">';
+            cart.forEach(item => {
+                summary += `<div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;"><span>${item.name} x${item.quantity}</span><span>AUD $${(item.price * item.quantity).toFixed(2)}</span></div>`;
+            });
+            summary += '</div>';
+            summary += `<div style="border-top: 1px solid rgba(212, 175, 55, 0.2); padding-top: 1rem;">`;
+            summary += `<div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;"><span>Subtotal:</span><span>AUD $${subtotal.toFixed(2)}</span></div>`;
+            if (deliveryType === 'delivery') {
+                summary += `<div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;"><span>Delivery Fee:</span><span>AUD $${fee.toFixed(2)}</span></div>`;
+            }
+            summary += `<div style="display: flex; justify-content: space-between; font-weight: 700; color: #d4af37;"><span>Total:</span><span>AUD $${total.toFixed(2)}</span></div>`;
+            summary += '</div>';
+
+            orderSummary.innerHTML = summary;
+
+            if (currentUser) {
+                loyaltyPointsInfo.textContent = `🏆 You will earn ${pointsEarned} loyalty points from this order!`;
+                loyaltyPointsInfo.style.display = 'block';
+            }
+        }
+
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const deliveryType = document.querySelector('input[name="deliveryType"]:checked').value;
+            if (deliveryType === 'delivery' && !document.getElementById('address').value) {
+                alert('Please enter a delivery address');
+                return;
+            }
+
+            // Calculate and add loyalty points
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const fee = deliveryType === 'delivery' ? DELIVERY_FEE : 0;
+            const total = subtotal + fee;
+            const pointsEarned = Math.floor(total * POINTS_PER_DOLLAR);
+
+            if (currentUser) {
+                currentUser.loyaltyPoints += pointsEarned;
+                saveUser(currentUser);
+                updateLoyaltyBadge();
+            }
+
+            successMessage.classList.add('show');
+            checkoutForm.style.display = 'none';
+
+            setTimeout(() => {
+                cart = [];
+                updateCart();
+                checkoutForm.style.display = 'block';
+                checkoutForm.reset();
+                successMessage.classList.remove('show');
+                checkoutModal.classList.remove('show');
+            }, 3000);
+        });
+
+        // ============================================
+        // MOBILE MENU
+        // ============================================
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ============================================
+        // CART ICON CLICK
+        // ============================================
+        document.getElementById('cartIcon').addEventListener('click', () => {
+            document.getElementById('ordering').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // ============================================
+        // MEMBER DROPDOWN
+        // ============================================
+        const memberBtn = document.getElementById('memberBtn');
+        const memberDropdown = document.getElementById('memberDropdown');
+
+        memberBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            memberDropdown.classList.toggle('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.member-dropdown')) {
+                memberDropdown.classList.remove('show');
+            }
+        });
+
+        // ============================================
+        // RESERVATION FORM
+        // ============================================
+        const reservationForm = document.getElementById('reservationForm');
+        const reservationSuccessMessage = document.getElementById('reservationSuccessMessage');
+
+        reservationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            reservationSuccessMessage.classList.add('show');
+            reservationForm.reset();
+            setTimeout(() => {
+                reservationSuccessMessage.classList.remove('show');
+            }, 5000);
+        });
+
+        const resDate = document.getElementById('resDate');
+        const today = new Date().toISOString().split('T')[0];
+        resDate.setAttribute('min', today);
+
+        // ============================================
+        // SMOOTH SCROLL
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ============================================
+        // UTILITY FUNCTIONS
+        // ============================================
+        function closeAllModals() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('show');
+            });
+        }
+
+        function setupEventListeners() {
+            document.getElementById('memberBtn').addEventListener('click', (e) => {
+                e.preventDefault();
+                if (!currentUser) {
+                    openAuthModal();
+                }
+            });
+
+            document.getElementById('loginRegisterLink')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                openAuthModal();
+            });
+        }
+
+        // ============================================
+        // INITIALIZE APP
+        // ============================================
+        init();
+    </script>
+</body>
+</html>
